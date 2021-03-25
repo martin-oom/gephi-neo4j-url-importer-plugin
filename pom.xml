@@ -9,7 +9,7 @@
 
     <groupId>de.serviceflow</groupId>
     <artifactId>neo4j-url-importer-plugin</artifactId>
-    <version>0.2.0</version>
+    <version>0.2.1</version>
     <packaging>nbm</packaging>
 
     <name>Neo4j Url Import Plugin</name>
@@ -26,7 +26,7 @@
      <!-- Properties -->
     <properties>
         <!-- Version of Gephi building plugins against. Plugins with anterior versions will be ignored -->
-        <gephi.version>0.9.1</gephi.version>
+        <gephi.version>0.9.2</gephi.version>
     </properties>
     
     <!-- Dependencies -->
@@ -97,9 +97,22 @@
         <dependency>
           <groupId>org.neo4j.driver</groupId>
           <artifactId>neo4j-java-driver</artifactId>
-          <version>1.7.5</version>
+          <version>4.2.4</version>
         </dependency>
     </dependencies>
+
+    <!-- REMARK: Attempt to fix:
+    http://bits.netbeans.org/nexus/content/groups/netbeans/): 
+    Not authorized , ReasonPhrase:Repository decommissioned. Please refer to 
+    https://netbeans.apache.org/about/oracle-transition.html for more information.. 
+    -->
+    <repositories>
+        <repository>
+            <id>netbeans</id>
+            <name>NetBeans</name>
+            <url>http://netbeans.apidesign.org/maven2/</url>
+        </repository>
+    </repositories>
 
     <build>
         <plugins>

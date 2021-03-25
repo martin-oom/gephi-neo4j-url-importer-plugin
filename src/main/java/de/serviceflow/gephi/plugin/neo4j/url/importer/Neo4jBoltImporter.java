@@ -12,20 +12,20 @@ import org.gephi.io.importer.api.Database;
 import org.gephi.io.importer.api.ElementDraft;
 import org.gephi.io.importer.api.Issue;
 
-import org.neo4j.driver.v1.AuthTokens;
-import org.neo4j.driver.v1.Driver;
-import org.neo4j.driver.v1.GraphDatabase;
-import org.neo4j.driver.v1.Session;
-import org.neo4j.driver.v1.StatementResult;
-import org.neo4j.driver.v1.Transaction;
-import org.neo4j.driver.v1.TransactionWork;
-import org.neo4j.driver.v1.Record;
-import org.neo4j.driver.v1.Value;
-import org.neo4j.driver.v1.Values;
-import org.neo4j.driver.v1.types.Node;
-import org.neo4j.driver.v1.types.Relationship;
+import org.neo4j.driver.AuthTokens;
+import org.neo4j.driver.Driver;
+import org.neo4j.driver.GraphDatabase;
+import org.neo4j.driver.Session;
+import org.neo4j.driver.Result;
+import org.neo4j.driver.Transaction;
+import org.neo4j.driver.TransactionWork;
+import org.neo4j.driver.Record;
+import org.neo4j.driver.Value;
+import org.neo4j.driver.Values;
+import org.neo4j.driver.types.Node;
+import org.neo4j.driver.types.Relationship;
 
-import static org.neo4j.driver.v1.Values.parameters;
+import static org.neo4j.driver.Values.parameters;
 
 import java.util.Map;
 import java.util.List;
@@ -102,7 +102,7 @@ public class Neo4jBoltImporter implements DatabaseImporter {
         ElementDraft.Factory factory = container.factory();
 
         try {
-          StatementResult result = session.run(database.getNodeQuery()+" RETURN n,ID(n),LABELS(n);");
+          Result result = session.run(database.getNodeQuery()+" RETURN n,ID(n),LABELS(n);");
           while (result.hasNext()) {
               Record record = result.next();
               int id = record.get( 1 ).asInt();
@@ -142,7 +142,7 @@ public class Neo4jBoltImporter implements DatabaseImporter {
         ElementDraft.Factory factory = container.factory();
 
         try {
-          StatementResult result = session.run(database.getEdgeQuery()+" RETURN r,ID(r),ID(n),ID(m),TYPE(r);");
+          Result result = session.run(database.getEdgeQuery()+" RETURN r,ID(r),ID(n),ID(m),TYPE(r);");
           while (result.hasNext()) {
               Record record = result.next();
               int id = record.get( 1 ).asInt();

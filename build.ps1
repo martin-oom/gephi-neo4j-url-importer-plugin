@@ -1,0 +1,2 @@
+docker run -it --rm -v ${PSScriptRoot}:/usr/src/mymaven -w /usr/src/mymaven maven:3.3-jdk-8 mvn clean install compile
+#docker run -it --rm -v ${PSScriptRoot}:/usr/src/mymaven -w /usr/src/mymaven maven:3.3-jdk-8 bash
